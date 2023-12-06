@@ -4,6 +4,7 @@ export const locService = {
 }
 
 
+
 const locs = [
   { id: 'abc', name: 'Greatplace', lat: 32.047104, lng: 34.832384, createAt: 'yestarday', updatedAt: 'today' }, 
   { id: 'abc', name: 'Neveragain', lat: 32.047201, lng: 34.832581, createAt: 'yestarday', updatedAt: 'today' }, 
