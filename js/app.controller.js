@@ -70,9 +70,8 @@ function onRemoveLoc(id) {
        .catch(error => console.error('Error removing loc:', error))
 }
 
-function onSearchLocation(ev) {
-    ev.preventDefault()
-    const userInput = ev.target.value
+function onSearchLocation() {
+    const userInput = document.querySelector('input').value
     if (userInput) {
         searchLocation(userInput)
     }

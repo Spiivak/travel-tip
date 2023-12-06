@@ -12,10 +12,10 @@
   <header class="main-header flex space-between align-center">
     <h1>Travel Tip</h1>
     <section class="header-actions flex">
-      <form>
-        <input onchange="onSearchLocation(event)" type="search" placeholder="Enter location">
-        <button onclick="onPanTo()"class="btn-pan">Go</button>
-      </form>
+      <div>
+        <input type="search" placeholder="Enter location">
+        <button onclick="onSearchLocation(event)"class="btn-pan">Go</button>
+      </div>
       <button onclick="onGetUserPos()" class="btn-user-pos">My Location</button>
     </section>
   </header>
