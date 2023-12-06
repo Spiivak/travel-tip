@@ -137,7 +137,7 @@ function generateCopyLink() {
                 const latestLoc = locs[locs.length - 1]; // Assuming the latest location is at the end of the array
                 const lat = latestLoc.lat;
                 const lng = latestLoc.lng;
-                const link = `https://Spiivak.github.io/repo-name/index.html?lat=${lat}&lng=${lng}`;
+                const link = `https://spiivak.github.io/travel-tip/?lat=${lat}&lng=${lng}`;
 
                 // Copy the link to the clipboard
                 navigator.clipboard.writeText(link)
