@@ -7,6 +7,8 @@ window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onRemoveLoc = onRemoveLoc
+window.onSearchLocation = onSearchLocation
+
 
 function onInit() {
     mapService.initMap()
@@ -50,6 +52,7 @@ function onGetUserPos() {
             })
         .then(loc => locService.getEmptyLoc(loc.place, loc.pos.coords.latitude, loc.pos.coords.longitude))
         .then(loc => locService.save(loc))
+        .then(loc => onPanTo(loc.lat, loc.lng))
         .then(() => renderPlaces())
         .catch(err => {
             console.log('err!!!', err)
@@ -65,6 +68,42 @@ function onRemoveLoc(id) {
     locService.remove(id)
        .then(() => renderPlaces())
        .catch(error => console.error('Error removing loc:', error))
+}
+
+function onSearchLocation(ev) {
+    const userInput = ev.target.value
+    if (userInput) {
+        searchLocation(userInput)
+    }
+}
+
+function searchLocation(userInput) {
+    const geocoder = new google.maps.Geocoder()
+
+    geocoder.geocode({ address: userInput }, (results, status) => {
+        if (status === google.maps.GeocoderStatus.OK && results.length > 0) {
+            const location = results[0].geometry.location
+            const place = results[0].formatted_address
+
+            // Pan to the searched location on the map
+            onPanTo(location.lat(), location.lng())
+
+            // Add the searched location as a new place
+            const newLoc = {
+                name: place,
+                lat: location.lat(),
+                lng: location.lng(),
+            }
+
+            locService.save(newLoc)
+                .then(() => renderPlaces())
+                .catch(err => {
+                    console.error('Error saving new location:', err)
+                })
+        } else {
+            console.error('Geocode was not successful for the following reason:', status)
+        }
+    })
 }
 
 function renderPlaces() {
