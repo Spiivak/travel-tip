@@ -1,7 +1,8 @@
 export const mapService = {
   initMap,
   addMarker,
-  panTo
+  panTo,
+  getMapCenter
 }
 
 // Var that is used throughout this Module (not global)
@@ -28,6 +29,18 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
 
       console.log('Map!', gMap)
     })
+}
+
+function getMapCenter() {
+  if (!gMap) {
+    return null
+  }
+
+  const center = gMap.getCenter()
+  return {
+    lat: center.lat(),
+    lng: center.lng()
+  };
 }
 
 
