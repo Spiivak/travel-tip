@@ -50,6 +50,7 @@ function onGetUserPos() {
             })
         .then(loc => locService.getEmptyLoc(loc.place, loc.pos.coords.latitude, loc.pos.coords.longitude))
         .then(loc => locService.save(loc))
+        .then(loc => onPanTo(loc.lat, loc.lng))
         .then(() => renderPlaces())
         .catch(err => {
             console.log('err!!!', err)
