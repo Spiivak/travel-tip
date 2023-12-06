@@ -21,8 +21,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         const lngLat = {lat: ev.latLng.lat(), lng: ev.latLng.lng()}
         // gMap.center = lngLat
         panTo(lngLat.lat, lngLat.lng)
-        console.log('gMap.addListener  lngLat.lng:', lngLat.lng)
-        console.log('gMap.addListener  lngLat.lat:', lngLat.lat)
+        addMarker(lngLat)
         console.log('Map Clicked:', lngLat)
         // resolve(lngLat)
       })
@@ -36,13 +35,12 @@ function addMarker(loc) {
   var marker = new google.maps.Marker({
     position: loc,
     map: gMap,
-    title: 'Hello World!'
+    title: prompt('Enter a name for this location')
   })
   return marker
 }
 
 function panTo(lat, lng) {
-  console.log('PanTo', lat, lng)
   var laLatLng = new google.maps.LatLng(lat, lng)
   gMap.panTo(laLatLng)
 }

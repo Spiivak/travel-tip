@@ -1,3 +1,12 @@
+export const utilService = {
+  makeId,
+  getRandomIntInclusive,
+  randomPastTime,
+  saveToStorage,
+  loadFromStorage,
+}
+
+
 function saveToStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value))
 }

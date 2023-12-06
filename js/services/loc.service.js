@@ -6,10 +6,11 @@ const LOCS_KEY = 'locsDB'
 createLocs()
 
 export const locService = {
-  query,
+  getLocs,
   get,
   remove,
   save,
+  getEmptyLoc
 }
 
 
@@ -19,7 +20,7 @@ export const locService = {
 //   { id: utilService.makeId(), name: 'WhyThisAgain', lat: 32.047201, lng: 34.832581, createAt: utilService.randomPastTime(), updatedAt: utilService.randomPastTime() },
 // ]
 
-function query() {
+function getLocs() {
   return storageService.query(LOCS_KEY).then(locs => {
     return locs
   })
@@ -34,11 +35,7 @@ function remove(locId) {
 }
 
 function save(loc) {
-	if (loc.id) {
-		return storageService.put(LOCS_KEY, loc)
-	} else {
 		return storageService.post(LOCS_KEY, loc)
-	}
 }
 
 // function getLocsByIds(id) {
@@ -74,14 +71,13 @@ function createLoc(name, locPos) {
   return loc
 }
 
-function getEmptyLoc() {
+function getEmptyLoc(name, lat, lng) {
   return {
-    id: '',
-    name: '',
-    lat: '',
-    lng: '',
-    createAt: '',
-    updatedAt: '',
-    birth: '',
+    id: utilService.makeId(),
+    name,
+    lat,
+    lng,
+    createAt: new Date(),
+    updatedAt: new Date(),
   }
 }
