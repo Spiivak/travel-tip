@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
   <title>Travel Tip</title>
 </head>
 <body class="main-layout">
@@ -11,7 +11,7 @@
   <!-- Header Section -->
   <header class="main-header flex space-between align-center">
     <h1>Travel Tip</h1>
-    <section class="header-actions">
+    <section class="header-actions flex">
       <form>
         <input type="search" placeholder="Enter location">
         <button onclick="onPanTo()"class="btn-pan">Go</button>
@@ -21,27 +21,28 @@
   </header>
 
   <!-- Current Location Section -->
-  <section class="curr-location">
+  <section class="curr-location flex space-between justify-center align-center">
     <h2>Current Location <span class="user-pos"></span></h2>
     <button class="btn-copy-location">Copy Location</button>
   </section>
 
 <!-- Main Section -->
-  <main class="main-section grid column">
-    <section class="grid column">
+  <main class="map-section grid column">
+    <section class="grid">
       <div class="weather"></div>
       <div class="locations-table"></div>
     </section>
 
-    <div id="map" style="width: 100%; height: 400px;"></div>
+    <div class="map" on></div>
   </main>
 
   <!-- Footer Section -->
-  <footer>
+  <footer class="gird">
     <p>Made by Noam Saar & Eden Spivak</p>
-    <ul>
-      <li>Eden's git <a href="#"></a></li>
-    </ul>
+    <!-- <ul class="clean-list">
+      <li>Eden's git</li>
+      <li>Noam's git</li>
+    </ul> -->
   </footer>
   
   <!--

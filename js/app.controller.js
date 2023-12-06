@@ -49,5 +49,20 @@ function onGetUserPos() {
 }
 function onPanTo() {
     console.log('Panning the Map')
+    const place = 
     mapService.panTo(35.6895, 139.6917)
+}
+
+function onPanToPlace(placeId) {
+    const place = getPlaceById(placeId)
+    gMap.setCenter({ lat: place.lat, lng: place.lng })
+    gMap.setZoom(place.zoom)
+
+    const markerOptions = {
+        position: { lat: place.lat, lng: place.lng },
+        map: gMap,
+        title: place.name,
+    }
+
+    const marker = new google.maps.Marker(markerOptions)
 }

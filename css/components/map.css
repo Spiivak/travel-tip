@@ -1,0 +1,17 @@
+
+.main-layout section {
+    gap: 20px;
+}
+
+.map-section .weather{
+    background-color: whitesmoke;
+}
+
+.map-section .locations-table {
+    background-color: lightblue;
+}
+
+.map-section .map {
+  width: 100%;
+  height: 400px;
+}

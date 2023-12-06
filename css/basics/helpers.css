@@ -1,0 +1,31 @@
+.flex {
+  display: flex;
+}
+
+.flex.justify-center {
+  justify-content: center;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.space-between {
+  justify-content: space-between
+}
+
+.grid {
+    display: grid;
+}
+
+.grid.column {
+    grid-auto-flow: column;
+}
+
+.grid.align-center {
+    align-items: center;
+}
+
+.clean-list {
+  list-style-type: none;
+}

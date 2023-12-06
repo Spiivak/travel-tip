@@ -1,0 +1,22 @@
+
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  height: 100dvh;
+
+}
+
+.main-layout > * {
+  grid-column: 2;
+}
+
+.map-section {
+  grid-auto-columns: 1fr 2fr;
+  grid-template-rows: max-content;
+  gap: 20px;
+}
+
+.curr-location {
+  padding-block-end: 30px;
+}
