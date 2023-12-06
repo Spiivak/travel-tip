@@ -13,7 +13,7 @@
     <h1>Travel Tip</h1>
     <section class="header-actions flex">
       <form>
-        <input oninput="onSearchLocation(event)" type="search" placeholder="Enter location">
+        <input onchange="onSearchLocation(event)" type="search" placeholder="Enter location">
         <button onclick="onPanTo()"class="btn-pan">Go</button>
       </form>
       <button onclick="onGetUserPos()" class="btn-user-pos">My Location</button>

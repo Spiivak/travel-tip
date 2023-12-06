@@ -71,6 +71,7 @@ function onRemoveLoc(id) {
 }
 
 function onSearchLocation(ev) {
+    ev.preventDefault()
     const userInput = ev.target.value
     if (userInput) {
         searchLocation(userInput)
