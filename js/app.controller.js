@@ -6,6 +6,7 @@ window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
+window.onRemoveLoc = onRemoveLoc
 
 function onInit() {
     mapService.initMap()
@@ -49,15 +50,21 @@ function onGetUserPos() {
             })
         .then(loc => locService.getEmptyLoc(loc.place, loc.pos.coords.latitude, loc.pos.coords.longitude))
         .then(loc => locService.save(loc))
-        .then(renderPlaces())
+        .then(() => renderPlaces())
         .catch(err => {
             console.log('err!!!', err)
         })
 }
 
-function onPanTo() {
+function onPanTo(lat, lng) {
     console.log('Panning the Map')
-    mapService.panTo(35.6895, 139.6917)
+    mapService.panTo(lat, lng)
+}
+
+function onRemoveLoc(id) {
+    locService.remove(id)
+       .then(() => renderPlaces())
+       .catch(error => console.error('Error removing loc:', error))
 }
 
 function renderPlaces() {
@@ -66,8 +73,10 @@ function renderPlaces() {
         .then(locs => {
             console.log('Locations:', locs)
             if(Array.isArray(locs)) {
+                console.log('renderPlaces  locs:', locs)
+                
                 locs.map(loc => {
-                    placesHTML += `<li>${loc.name}</li>`
+                    placesHTML += `<li>${loc.name} <button onclick="onPanTo(${loc.lat}, ${loc.lng})">Go</button> <button onclick="onRemoveLoc('${loc.id}')">Remove</button></li>`
                 })
             } else {
                 console.error('locs is not an array', locs)
