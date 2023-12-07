@@ -137,11 +137,12 @@ function generateCopyLink() {
                 const latestLoc = locs[locs.length - 1]
                 const lat = latestLoc.lat
                 const lng = latestLoc.lng
-                const link = `https://spiivak.github.io/repo-name/index.html?lat=${lat}&lng=${lng}`
+                const link = `https://spiivak.github.io/travel-tip/index.html?lat=${lat}&lng=${lng}`
 
                 // Copy the link to the clipboard
                 navigator.clipboard.writeText(link)
                     .then(() => console.log('Link copied to clipboard:', link))
+                    .then(() => onPanTo(lat, lng))
                     .catch(error => console.error('Error copying link to clipboard:', error))
             } else {
                 console.error('No locations available')
