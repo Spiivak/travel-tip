@@ -1,8 +1,7 @@
 export const mapService = {
   initMap,
   addMarker,
-  panTo,
-  getMapCenter
+  panTo
 }
 
 // Var that is used throughout this Module (not global)
@@ -31,18 +30,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
     })
 }
 
-function getMapCenter() {
-  if (!gMap) {
-    return null
-  }
-
-  const center = gMap.getCenter()
-  return {
-    lat: center.lat(),
-    lng: center.lng()
-  };
-}
-
 
 function addMarker(loc) {
   var marker = new google.maps.Marker({
@@ -57,6 +44,7 @@ function panTo(lat, lng) {
   var laLatLng = new google.maps.LatLng(lat, lng)
   gMap.panTo(laLatLng)
 }
+
 
 function _connectGoogleApi() {
   if (window.google) return Promise.resolve()
