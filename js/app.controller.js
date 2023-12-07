@@ -65,8 +65,8 @@ function onGetUserPos() {
 }
 
 function onPanTo(lat, lng) {
-    console.log('Panning the Map')
     mapService.panTo(lat, lng)
+    console.log(`panTo: ${lat}, ${lng}`)
 }
 
 function onRemoveLoc(id) {
