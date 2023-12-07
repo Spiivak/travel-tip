@@ -141,8 +141,11 @@ function generateCopyLink() {
 
                 // Copy the link to the clipboard
                 navigator.clipboard.writeText(link)
-                    .then(() => console.log('Link copied to clipboard:', link))
-                    .then(() => onPanTo(lat, lng))
+                    .then(() => {
+                        console.log('Link copied to clipboard:', link)
+                        onPanTo(lat, lng)
+                    })
+                    // .then(() => onPanTo(lat, lng))
                     .catch(error => console.error('Error copying link to clipboard:', error))
             } else {
                 console.error('No locations available')
