@@ -12,9 +12,9 @@ window.generateCopyLink = generateCopyLink
 
 
 function onInit() {
-    const params = new URLSearchParams(window.location.search);
-    const lat = params.get('lat');
-    const lng = params.get('lng');
+    const params = new URLSearchParams(window.location.search)
+    const lat = params.get('lat')
+    const lng = params.get('lng')
 
     mapService.initMap()
     .then(() => {
@@ -134,18 +134,18 @@ function generateCopyLink() {
     locService.getLocs()
         .then(locs => {
             if (locs.length > 0) {
-                const latestLoc = locs[locs.length - 1]; // Assuming the latest location is at the end of the array
-                const lat = latestLoc.lat;
-                const lng = latestLoc.lng;
-                const link = `https://spiivak.github.io/repo-name/index.html?lat=${lat}&lng=${lng}`;
+                const latestLoc = locs[locs.length - 1]
+                const lat = latestLoc.lat
+                const lng = latestLoc.lng
+                const link = `https://spiivak.github.io/repo-name/index.html?lat=${lat}&lng=${lng}`
 
                 // Copy the link to the clipboard
                 navigator.clipboard.writeText(link)
                     .then(() => console.log('Link copied to clipboard:', link))
-                    .catch(error => console.error('Error copying link to clipboard:', error));
+                    .catch(error => console.error('Error copying link to clipboard:', error))
             } else {
-                console.error('No locations available');
+                console.error('No locations available')
             }
         })
-        .catch(error => console.error('Error fetching locations:', error));
+        .catch(error => console.error('Error fetching locations:', error))
 }
